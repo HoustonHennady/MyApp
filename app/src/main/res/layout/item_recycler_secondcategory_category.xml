@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="7dp"
+    android:layout_margin="3dp"
+    android:background="@color/colorOrange"
+    android:orientation="vertical"
+    android:elevation="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/item_recycler_back">
+        <TextView
+            style="@style/textMedium"
+            android:id="@+id/text_secondcategory_category"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:textSize="16sp"
+            android:text="@string/app_name"
+            android:textColor="@color/colorWhite">
+        </TextView>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

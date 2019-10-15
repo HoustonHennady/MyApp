@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/item1"
+          android:id="@+id/categoryFragment"
+          android:icon="@drawable/icon_category_selector" />
+    <item android:title="@string/item2"
+          android:id="@+id/basketFragment"
+          android:icon="@drawable/icon_shopping_selector"/>
+    <item android:title="@string/item3"
+          android:id="@+id/orderFragment"
+          android:icon="@drawable/icon_done_selector"/>
+</menu>

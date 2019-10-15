@@ -1,0 +1,57 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorOrange1</item>
+        <item name="android:navigationBarColor">@color/colorAppBar</item>
+        <item name="android:colorEdgeEffect">@color/colorOrange</item>
+    </style>
+
+
+    <style name="textLarge" parent="@style/TextAppearance.AppCompat.SearchResult.Subtitle">
+        <item name="android:textColor">@color/colorOrange1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:alpha">0.9</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="textMedium" parent="@style/TextAppearance.AppCompat.SearchResult.Subtitle">
+        <item name="android:textColor">@color/colorOrange1</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:alpha">0.9</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="textLight" parent="@style/TextAppearance.AppCompat.SearchResult.Subtitle">
+        <item name="android:textColor">@color/colorOrange1</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:alpha">0.9</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+
+    <style name="BottomSheetDialog" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
+    </style>
+
+    <style name="bottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet</item>
+    </style>
+    <style name="nameProductDetails">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/colorOrange</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:alpha">0.9</item>
+    </style>
+    <style name="edit_text_add_to_base">
+        <item name="android:textColor">@color/colorOrange</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:alpha">0.9</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:paddingEnd">5dp</item>
+    </style>
+    </resources>

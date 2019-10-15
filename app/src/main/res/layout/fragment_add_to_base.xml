@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:id="@+id/textLabelAddFragment"
+            style="@style/nameProductDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="168dp"
+            android:text="@string/add_to_database"
+            android:textColor="@color/colorOrange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/labelName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/name"
+            app:layout_constraintBottom_toTopOf="@id/editName"
+            app:layout_constraintStart_toStartOf="@id/editName"
+            app:layout_constraintTop_toBottomOf="@+id/textLabelAddFragment" />
+
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:inputType="text"
+            style="@style/edit_text_add_to_base"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelName" />
+
+        <TextView
+            android:id="@+id/labelFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/full_name"
+            app:layout_constraintBottom_toTopOf="@id/editFullName"
+            app:layout_constraintStart_toStartOf="@id/editFullName"
+            app:layout_constraintTop_toBottomOf="@+id/editName" />
+
+        <EditText
+            android:id="@+id/editFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:ems="10"
+            style="@style/edit_text_add_to_base"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelFullName"
+            />
+
+        <TextView
+            android:id="@+id/labelPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/price"
+            app:layout_constraintBottom_toTopOf="@id/editPrice"
+            app:layout_constraintStart_toStartOf="@id/editPrice"
+            app:layout_constraintTop_toBottomOf="@+id/editFullName"
+            />
+
+        <EditText
+            android:id="@+id/editPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            style="@style/edit_text_add_to_base"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelPrice" />
+
+        <TextView
+            android:id="@+id/labelDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/description"
+
+            app:layout_constraintBottom_toTopOf="@id/editDescription"
+            app:layout_constraintStart_toStartOf="@id/editDescription"
+            app:layout_constraintTop_toBottomOf="@+id/editPrice"
+            />
+
+
+
+        <EditText
+            android:id="@+id/editDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:inputType="text"
+            style="@style/edit_text_add_to_base"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelDescription" />
+
+        <TextView
+            android:id="@+id/labelPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/picture"
+            app:layout_constraintBottom_toTopOf="@id/editPicture"
+            app:layout_constraintStart_toStartOf="@id/editPicture"
+            app:layout_constraintTop_toBottomOf="@+id/editDescription" />
+
+        <EditText
+            android:id="@+id/editPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:inputType="textUri|textPersonName"
+            style="@style/edit_text_add_to_base"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelPicture" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            style="@android:style/Widget.Material.Spinner"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            app:layout_constraintEnd_toEndOf="@id/editPicture"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="@id/editPicture"
+            app:layout_constraintTop_toBottomOf="@+id/editPicture" />
+
+        <Button
+            android:id="@+id/buttonAddToBase"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/add"
+            android:textAllCaps="false"
+            android:textColor="@color/colorOrange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

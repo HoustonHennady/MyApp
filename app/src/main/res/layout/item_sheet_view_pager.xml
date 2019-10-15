@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:elevation="4dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageViewPager"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[2]" />
+
+    <TextView
+        android:id="@+id/nameProductViewPager"
+        style="@style/textMedium"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.9"
+        android:textColor="@color/colorOrange"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPager"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingStart="5dp"/>
+
+    <Button
+        android:id="@+id/addToBaseViewPager"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorOrange1"
+        android:text="ADD"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:icon="@drawable/ic_shopping_basket_checked"
+        app:iconSize="24dp"
+        app:iconTint="@color/colorOrange1"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
