@@ -46,22 +46,24 @@ class AdapterBasketRecycler : RecyclerView.Adapter<AdapterBasketRecycler.ViewHol
         private val buttonPlus = view.button_plus
         private val buttonMinus = view.button_minus
         private val textQuantity = view.text_quantity
-        var quantity = 0
 
         fun bind(model: ProductModel){
             Glide.with(itemView.context)
                 .load(model.picture)
                 .into(imageView)
-
+            textName.text = model.name
+            textPrice.text = "${model.price} руб"
+            textQuantity.text = model.quantity.toString()
             buttonPlus.setOnClickListener{
-                textQuantity.text = quantity++.toString()
-                textPrice.text = "${(this.quantity* model.price)}"
+                textQuantity.text = model.quantity++.toString()
                 callback?.onClickButton(model)
             }
             buttonMinus.setOnClickListener{
-                textQuantity.text = quantity--.toString()
-                textPrice.text = "${this.quantity/ model.price}"
+                textQuantity.text = model.quantity--.toString()
                 callback?.onClickButton(model)
+            }
+            imageView.setOnClickListener {
+                callback?.onClickImage(model)
             }
         }
     }

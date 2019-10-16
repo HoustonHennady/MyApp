@@ -107,7 +107,7 @@ class SecondCategoryFragment : Fragment() {
         })
     }
 
-    private fun openProductDetailsSheet(model: ProductModel) {
+     fun openProductDetailsSheet(model: ProductModel) {
         val productDetailsSheet =
             BottomSheetDialog(this@SecondCategoryFragment.context!!, R.style.BottomSheetDialog)
         val view = layoutInflater.inflate(R.layout.bottom_sheet_product_detail, null)
