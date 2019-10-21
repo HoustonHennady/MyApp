@@ -8,7 +8,7 @@ import kotlin.collections.ArrayList
  * Use this adapter for any simple recycler view adapter you want
  */
 abstract class BaseAdapter<P>: RecyclerView.Adapter<BaseViewHolder<P>>() {
-    protected var mDataList: MutableList<P> = ArrayList()
+    private var mDataList: MutableList<P> = ArrayList()
     private var mCallback: BaseAdapterCallback<P>? = null
 
     var hasItems = false
@@ -59,7 +59,6 @@ abstract class BaseAdapter<P>: RecyclerView.Adapter<BaseViewHolder<P>>() {
             } else {
                 mCallback!!.onLongClick(mDataList[position])
             }
-
         }
     }
 

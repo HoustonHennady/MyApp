@@ -59,7 +59,7 @@ class AddProductFragment : Fragment() {
 
     private fun subscribe(){
         viewModel
-                .listAllSubCategory
+                .getListAllSubCategory()
                 .observe(viewLifecycleOwner, Observer {
             it.forEach { array.add(it.productCategory.toString()) }
 

@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +17,6 @@ import com.example.ProductModel
 import com.example.myappktx.Model.SubCategoryModel
 import com.example.myappktx.R
 import com.example.myappktx.Utill.RecyclerDecoration
-import com.example.myappktx.View.view.adapters.AdaperSecondCategoryProduuctDiffUtli
 import com.example.myappktx.View.view.adapters.AdapterSecondCategoryCategory
 import com.example.myappktx.View.view.adapters.AdapterSecondCategoryProduct
 import com.example.myappktx.View.view.adapters.BaseAdapterCallback
@@ -40,9 +38,9 @@ class SecondCategoryFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_second_fragment1, container, false)
     }
@@ -58,6 +56,7 @@ class SecondCategoryFragment : Fragment() {
         viewModel = ViewModelProviders.of(activity!!).get(MyViewModel::class.java)
         recyclerAdapterCategory = AdapterSecondCategoryCategory()
         recyclerAdapterProduct = AdapterSecondCategoryProduct()
+
     }
 
     private fun setupRecycler() {
@@ -79,11 +78,11 @@ class SecondCategoryFragment : Fragment() {
     }
 
     private fun onSubscribe() {
-        viewModel.listSubCategory.observe(viewLifecycleOwner, Observer {
+        viewModel.getListSubCategory().observe(viewLifecycleOwner, Observer {
             recyclerAdapterCategory.setList(it)
             viewModel.fetchDataProductList(it[0].productCategory.toString())
         })
-        viewModel.listProductList.observe(viewLifecycleOwner, Observer {
+        viewModel.getProductList().observe(viewLifecycleOwner, Observer {
             recyclerAdapterProduct.setList(it)
             progressBar.visibility = View.GONE
             order_product_recycler.visibility = View.VISIBLE
@@ -92,7 +91,10 @@ class SecondCategoryFragment : Fragment() {
 
     private fun onClickRecycler() {
         recyclerAdapterCategory.attachCallback(object : BaseAdapterCallback<SubCategoryModel> {
-            override fun onLongClick(model: SubCategoryModel): Boolean { return false }
+            override fun onLongClick(model: SubCategoryModel): Boolean {
+                return false
+            }
+
             override fun onItemClick(model: SubCategoryModel) {
                 viewModel.fetchDataProductList(string = model.productCategory.toString())
                 order_product_recycler.visibility = View.GONE
@@ -100,16 +102,19 @@ class SecondCategoryFragment : Fragment() {
             }
         })
         recyclerAdapterProduct.attachCallback(object : BaseAdapterCallback<ProductModel> {
-            override fun onLongClick(model: ProductModel): Boolean { return false }
+            override fun onLongClick(model: ProductModel): Boolean {
+                return false
+            }
+
             override fun onItemClick(model: ProductModel) {
                 openProductDetailsSheet(model = model)
-             }
+            }
         })
     }
 
-     fun openProductDetailsSheet(model: ProductModel) {
+    fun openProductDetailsSheet(model: ProductModel) {
         val productDetailsSheet =
-            BottomSheetDialog(this@SecondCategoryFragment.context!!, R.style.BottomSheetDialog)
+                BottomSheetDialog(this@SecondCategoryFragment.context!!, R.style.BottomSheetDialog)
         val view = layoutInflater.inflate(R.layout.bottom_sheet_product_detail, null)
 
         view.apply {
@@ -123,12 +128,13 @@ class SecondCategoryFragment : Fragment() {
         productDetailsSheet.show()
         view.button_AddToBasket.setOnClickListener {
             viewModel
-                .sendToBasket(model = model)
-            Toast.makeText(context,"Добавлено в корзину",Toast.LENGTH_SHORT).show()
+                    .addToBasket(model = model)
+            Toast.makeText(context, "Добавлено в корзину", Toast.LENGTH_SHORT).show()
             productDetailsSheet.dismiss()
         }
-        view.button_AddMarker.setOnClickListener{
-            Toast.makeText(context,"Добавлено в закладки",Toast.LENGTH_SHORT).show()
+        view.button_AddMarker.setOnClickListener {
+            Toast.makeText(context, "Добавлено в закладки", Toast.LENGTH_SHORT).show()
+            viewModel.addToMarks(model)
 
         }
     }

@@ -17,7 +17,6 @@ class AdapterRecyclerBottomSheet :BaseAdapter<ProductModel>(){
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_sheet_view_pager,parent,false))
     }
 
-
     class ViewHolder(itemView: View): BaseViewHolder<ProductModel>(itemView = itemView){
         private val imageView = itemView.imageViewPager
         private val textView = itemView.nameProductViewPager
@@ -27,10 +26,6 @@ class AdapterRecyclerBottomSheet :BaseAdapter<ProductModel>(){
                     .load(model.picture)
                     .into(imageView)
             textView.text = model.name
-         
-
         }
-
     }
-
 }

@@ -90,20 +90,6 @@
             tools:layout_editor_absoluteY="157dp" />
 
         <TextView
-            android:id="@+id/title_description_ProductDetails"
-            style="@style/textMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:alpha="0.9"
-            android:text="@string/description_rus"
-            android:textColor="@color/colorOrange"
-            android:textSize="19sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_AddMarker" />
-
-        <TextView
             android:id="@+id/description_ProductDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,10 +99,11 @@
             android:paddingEnd="15dp"
             android:textAlignment="center"
             android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/button_AddMarker"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_description_ProductDetails"
-            tools:text="@tools:sample/cities" />
+            tools:text="@tools:sample/cities"
+            android:layout_marginTop="5dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

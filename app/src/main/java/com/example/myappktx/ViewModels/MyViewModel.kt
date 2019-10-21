@@ -2,10 +2,11 @@ package com.example.myappktx.ViewModels
 
 import androidx.lifecycle.*
 import com.example.ProductModel
-import com.example.myappktx.Model.MainCategory
-import com.example.myappktx.Repository.MyFireStore
+import com.example.myappktx.Model.MainCategoryModel
 import com.example.myappktx.Model.NewViewPagerModel
 import com.example.myappktx.Model.SubCategoryModel
+import com.example.myappktx.Model.UserModel
+import com.example.myappktx.Repository.MyFireStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -15,19 +16,28 @@ class MyViewModel : ViewModel(), LifecycleObserver {
     private val myFireStore = MyFireStore()
 
     //CategoryFragment
-    var listMainCategory: MutableLiveData<ArrayList<MainCategory>> = MutableLiveData()
-    var listViewPager: MutableLiveData<ArrayList<NewViewPagerModel>> = MutableLiveData()
-    var listRecyclerViewPager: MutableLiveData<ArrayList<ProductModel>> = MutableLiveData()
-
+    private var listMainCategory: MutableLiveData<ArrayList<MainCategoryModel>> = MutableLiveData()
+    private var listViewPager: MutableLiveData<ArrayList<NewViewPagerModel>> = MutableLiveData()
+    private var listRecyclerViewPager: MutableLiveData<ArrayList<ProductModel>> = MutableLiveData()
     //SubCategoryFragment
-    var listSubCategory: MutableLiveData<ArrayList<SubCategoryModel>> = MutableLiveData()
-    var listProductList: MutableLiveData<ArrayList<ProductModel>> = MutableLiveData()
-
+    private var listSubCategory: MutableLiveData<ArrayList<SubCategoryModel>> = MutableLiveData()
+    private var productList: MutableLiveData<ArrayList<ProductModel>> = MutableLiveData()
     //AddProductFragment
-    var listAllSubCategory: MutableLiveData<ArrayList<SubCategoryModel>> = MutableLiveData()
-
+    private var listAllSubCategory: MutableLiveData<ArrayList<SubCategoryModel>> = MutableLiveData()
     //BasketFragment
-    var listBasketProduct: MutableLiveData<ArrayList<ProductModel>> = MutableLiveData(ArrayList())
+    private var listBasketProduct: MutableLiveData<ArrayList<ProductModel>> = MutableLiveData(ArrayList())
+    //MarkersFragment
+    private var listMarkersProduct: ArrayList<ProductModel> = ArrayList()
+
+
+    fun getMainCategory(): LiveData<ArrayList<MainCategoryModel>> = listMainCategory
+    fun getListViewPager(): LiveData<ArrayList<NewViewPagerModel>> = listViewPager
+    fun getListRecyclerViewPager(): LiveData<ArrayList<ProductModel>> = listRecyclerViewPager
+    fun getListSubCategory(): LiveData<ArrayList<SubCategoryModel>> = listSubCategory
+    fun getProductList(): LiveData<ArrayList<ProductModel>> = productList
+    fun getListAllSubCategory(): LiveData<ArrayList<SubCategoryModel>> = listAllSubCategory
+    fun getListBasketProduct(): LiveData<ArrayList<ProductModel>> = listBasketProduct
+    fun getListMarkersProduct(): ArrayList<ProductModel> = listMarkersProduct
 
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -40,7 +50,7 @@ class MyViewModel : ViewModel(), LifecycleObserver {
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun fetchDataViewPager() {
         viewModelScope.async(Dispatchers.Main) {
-            this@MyViewModel.listViewPager.value = myFireStore.getViewPagerList()
+            this@MyViewModel.listViewPager.value = myFireStore.getViewPagerPosts()
         }
     }
 
@@ -53,18 +63,18 @@ class MyViewModel : ViewModel(), LifecycleObserver {
 
     fun fetchDataProductList(string: String) {
         viewModelScope.async(Dispatchers.Main) {
-            listProductList.value = myFireStore.getProductList(string)
+            productList.value = myFireStore.getProductList(string)
         }
     }
 
 
     fun fetchDataRecyclerViewPagerList(string: String) {
         viewModelScope.async(Dispatchers.Main) {
-            listRecyclerViewPager.value = myFireStore.getViewPagerRecyclerList(string)
+            listRecyclerViewPager.value = myFireStore.getViewPagerProductList(string)
         }
     }
 
-    fun sendToBasket(model: ProductModel) {
+    fun addToBasket(model: ProductModel) {
         listBasketProduct.value?.add(model)
     }
 
@@ -79,6 +89,17 @@ class MyViewModel : ViewModel(), LifecycleObserver {
             myFireStore.addNewProductToBase(productModel)
         }
     }
+
+    fun setUserData(userData: UserModel, userId: String) {
+        viewModelScope.launch {
+            myFireStore.setUserInfo(userData, userId = userId)
+        }
+    }
+
+    fun addToMarks(product: ProductModel) {
+        listMarkersProduct.add(product)
+    }
+
 }
 
 

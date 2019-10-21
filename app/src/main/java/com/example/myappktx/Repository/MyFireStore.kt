@@ -1,9 +1,10 @@
 package com.example.myappktx.Repository
 
 import com.example.ProductModel
-import com.example.myappktx.Model.MainCategory
+import com.example.myappktx.Model.MainCategoryModel
 import com.example.myappktx.Model.NewViewPagerModel
 import com.example.myappktx.Model.SubCategoryModel
+import com.example.myappktx.Model.UserModel
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
@@ -18,14 +19,14 @@ class MyFireStore {
     private val PRODUCTS: String = "Products"
     private val VIEWPAGER: String = "ViewPager"
 
-    suspend fun fetchMainCategory(): ArrayList<MainCategory> = withContext(Dispatchers.IO) {
+    suspend fun fetchMainCategory(): ArrayList<MainCategoryModel> = withContext(Dispatchers.IO) {
         val result = firestore
                 .collection(MAIN_CATEGORIES)
                 .get()
                 .await()
         return@withContext result
-                .toObjects(MainCategory::class.java)
-                as ArrayList<MainCategory>
+                .toObjects(MainCategoryModel::class.java)
+                as ArrayList<MainCategoryModel>
     }
 
     suspend fun fetchSubCategory(string: String): ArrayList<SubCategoryModel> = withContext(Dispatchers.IO) {
@@ -49,7 +50,7 @@ class MyFireStore {
                 as ArrayList<ProductModel>
     }
 
-    suspend fun getViewPagerList(): ArrayList<NewViewPagerModel> = withContext(Dispatchers.IO) {
+    suspend fun getViewPagerPosts(): ArrayList<NewViewPagerModel> = withContext(Dispatchers.IO) {
         val result = firestore
                 .collection(VIEWPAGER)
                 .get()
@@ -59,7 +60,7 @@ class MyFireStore {
                 as ArrayList<NewViewPagerModel>
     }
 
-    suspend fun getViewPagerRecyclerList(string: String): ArrayList<ProductModel> = withContext(Dispatchers.IO) {
+    suspend fun getViewPagerProductList(string: String): ArrayList<ProductModel> = withContext(Dispatchers.IO) {
         val result = firestore
                 .collection("Products").whereEqualTo("name", string)
                 .get()
@@ -76,8 +77,18 @@ class MyFireStore {
                 .toObjects(SubCategoryModel::class.java)
                 as ArrayList<SubCategoryModel>
     }
-    suspend fun addNewProductToBase(productModel: ProductModel) = withContext(Dispatchers.IO){
-        firestore.collection(PRODUCTS).document().set(productModel)
+    suspend fun addNewProductToBase(product: ProductModel) = withContext(Dispatchers.IO){
+        firestore.collection(PRODUCTS).document().set(product)
+    }
+
+
+    suspend fun setUserInfo(data:UserModel,userId: String) = withContext(Dispatchers.IO){
+        firestore.collection("Users").document("wabC1SinwjYbGXQebJhTLoRcH912").set(data)
+    }
+
+    suspend fun getUserInfo(userId: String):UserModel = withContext(Dispatchers.IO){
+        var result = firestore.collection("Users").document(userId).get().await()
+        return@withContext result.toObject(UserModel::class.java) as UserModel
     }
 }
 

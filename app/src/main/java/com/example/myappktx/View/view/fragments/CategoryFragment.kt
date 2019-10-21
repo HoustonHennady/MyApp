@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.myappktx.Model.MainCategory
+import com.example.myappktx.Model.MainCategoryModel
 import com.example.myappktx.Model.NewViewPagerModel
 import com.example.myappktx.R
 import com.example.myappktx.View.view.adapters.BaseAdapterCallback
@@ -72,11 +72,11 @@ class CategoryFragment : Fragment() {
 
 
     private fun subscribe() {
-        myViewModel.listMainCategory
-                .observe(viewLifecycleOwner, Observer<ArrayList<MainCategory>> {
-                    recyclerMainCategoryAdapter.setList(it)
-                })
-        myViewModel.listViewPager
+        myViewModel.getMainCategory().observe(viewLifecycleOwner, Observer {
+            recyclerMainCategoryAdapter.setList(it)
+        })
+
+        myViewModel.getListViewPager()
                 .observe(viewLifecycleOwner, Observer<ArrayList<NewViewPagerModel>> {
                     cardAdapter.setList(it)
                 })
@@ -91,12 +91,12 @@ class CategoryFragment : Fragment() {
     }
 
     private fun onClickRecycler() {
-        recyclerMainCategoryAdapter.attachCallback(object : BaseAdapterCallback<MainCategory> {
-            override fun onLongClick(model: MainCategory): Boolean {
+        recyclerMainCategoryAdapter.attachCallback(object : BaseAdapterCallback<MainCategoryModel> {
+            override fun onLongClick(model: MainCategoryModel): Boolean {
                 return false
             }
 
-            override fun onItemClick(model: MainCategory) {
+            override fun onItemClick(model: MainCategoryModel) {
                 myViewModel
                         .fetchDataSubCategory(model.subCategory.toString())
                 recycler_category.findNavController()

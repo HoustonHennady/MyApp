@@ -16,6 +16,7 @@ class AdapterBasketRecycler : RecyclerView.Adapter<AdapterBasketRecycler.ViewHol
 
     private var callback: BasketAdapterCallback<ProductModel>? = null
     private var model:ArrayList<ProductModel> = ArrayList()
+
     fun setList(arrayList: ArrayList<ProductModel>){
         model.clear()
         model = arrayList
@@ -40,6 +41,7 @@ class AdapterBasketRecycler : RecyclerView.Adapter<AdapterBasketRecycler.ViewHol
     }
 
     class ViewHolder(view:View, val callback: BasketAdapterCallback<ProductModel>?): RecyclerView.ViewHolder(view){
+
         private val imageView = view.image_basket_Recycler
         private val textName = view.text_name_basket_recycler
         private val textPrice = view.text_price_basket_recycler
@@ -48,20 +50,25 @@ class AdapterBasketRecycler : RecyclerView.Adapter<AdapterBasketRecycler.ViewHol
         private val textQuantity = view.text_quantity
 
         fun bind(model: ProductModel){
+
             Glide.with(itemView.context)
                 .load(model.picture)
                 .into(imageView)
+
             textName.text = model.name
             textPrice.text = "${model.price} руб"
             textQuantity.text = model.quantity.toString()
+
             buttonPlus.setOnClickListener{
                 textQuantity.text = model.quantity++.toString()
                 callback?.onClickButton(model)
             }
+
             buttonMinus.setOnClickListener{
                 textQuantity.text = model.quantity--.toString()
                 callback?.onClickButton(model)
             }
+
             imageView.setOnClickListener {
                 callback?.onClickImage(model)
             }

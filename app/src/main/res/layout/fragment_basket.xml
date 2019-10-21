@@ -20,8 +20,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="16dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/text_basket_title"
@@ -29,11 +28,26 @@
                 android:layout_height="wrap_content"
                 android:text="@string/baskrt_title"
                 android:textColor="@color/colorWhite"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="19sp"
+                style="@style/textLarge"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button_ShowMarkersFragment"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="?android:attr/panelBackground"
+                android:shadowColor="#2B2B2B"
+                app:iconTint="@color/colorWhite"
+                app:icon="@drawable/ic_marker_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
@@ -44,7 +58,8 @@
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/buttonBuy"/>
 
     <Button
         android:id="@+id/buttonBuy"
@@ -53,11 +68,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:background="@drawable/edit_text_background"
-        android:text="Оформить заказ"
+        android:text="Сделать заказ"
         android:textAllCaps="false"
         android:textColor="@color/colorOrange1"
-        android:textSize="16sp"
-        android:fontFamily="sans-serif-medium"
+        android:textSize="19sp"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
         app:iconTint="@color/colorWhite"
         android:alpha="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
