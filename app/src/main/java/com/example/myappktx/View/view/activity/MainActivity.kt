@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         lifecycle.addObserver(viewModel)
         auth = FirebaseAuth.getInstance()
         auth.signInWithEmailAndPassword(userLogin,userPassword)
-        Toast.makeText(applicationContext,auth.currentUser?.uid.toString(),Toast.LENGTH_SHORT).show()
 
 
     }
