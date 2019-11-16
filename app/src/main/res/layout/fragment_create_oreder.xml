@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/BottomSheetDialog"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context=".View.view.fragments.BottomSheet.CreateOrderSheet">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="50dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:paddingBottom="50dp">
 
         <TextView
-            android:id="@+id/textLabelAddFragment"
+            android:id="@+id/title_createOrder"
             style="@style/nameProductDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="176dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="168dp"
-            android:text="@string/add_to_database"
-            android:textColor="@color/colorOrange"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textAlignment="center"
+            android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,18 +31,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/name"
+            android:text="Имя"
             app:layout_constraintBottom_toTopOf="@id/userName_creteOrder"
             app:layout_constraintStart_toStartOf="@id/userName_creteOrder"
-            app:layout_constraintTop_toBottomOf="@+id/textLabelAddFragment" />
+            app:layout_constraintTop_toBottomOf="@+id/title_createOrder" />
 
         <EditText
             android:id="@+id/userName_creteOrder"
+            style="@style/edit_text_add_to_base"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:ems="10"
             android:inputType="text"
-            style="@style/edit_text_add_to_base"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/labelName" />
@@ -50,41 +52,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/full_name"
+            android:text="Адресс"
             app:layout_constraintBottom_toTopOf="@id/address_creteOrder"
             app:layout_constraintStart_toStartOf="@id/address_creteOrder"
             app:layout_constraintTop_toBottomOf="@+id/userName_creteOrder" />
 
         <EditText
             android:id="@+id/address_creteOrder"
+            style="@style/edit_text_add_to_base"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:ems="10"
-            style="@style/edit_text_add_to_base"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelFullName"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/labelFullName" />
 
         <TextView
             android:id="@+id/labelPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/price"
+            android:text="Телефон"
             app:layout_constraintBottom_toTopOf="@id/tel_creteOrder"
             app:layout_constraintStart_toStartOf="@id/tel_creteOrder"
-            app:layout_constraintTop_toBottomOf="@+id/address_creteOrder"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/address_creteOrder" />
 
         <EditText
             android:id="@+id/tel_creteOrder"
+            style="@style/edit_text_add_to_base"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            style="@style/edit_text_add_to_base"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelPrice" />
@@ -94,56 +94,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/description"
-
+            android:text="Комментарий"
             app:layout_constraintBottom_toTopOf="@id/comment_creteOrder"
             app:layout_constraintStart_toStartOf="@id/comment_creteOrder"
-            app:layout_constraintTop_toBottomOf="@+id/tel_creteOrder"
-            />
-
+            app:layout_constraintTop_toBottomOf="@+id/tel_creteOrder" />
 
 
         <EditText
             android:id="@+id/comment_creteOrder"
+            style="@style/edit_text_add_to_base"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:ems="10"
             android:inputType="text"
-            style="@style/edit_text_add_to_base"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/labelDescription" />
 
-        <TextView
-            android:id="@+id/labelPicture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/picture"
-            app:layout_constraintBottom_toTopOf="@id/editPicture"
-            app:layout_constraintStart_toStartOf="@id/editPicture"
-            app:layout_constraintTop_toBottomOf="@+id/comment_creteOrder" />
-
-        <EditText
-            android:id="@+id/editPicture"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:ems="10"
-            android:inputType="textUri|textPersonName"
-            style="@style/edit_text_add_to_base"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/labelPicture" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            style="@android:style/Widget.Material.Spinner"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            app:layout_constraintEnd_toEndOf="@id/editPicture"
-            android:textAlignment="center"
-            app:layout_constraintStart_toStartOf="@id/editPicture"
-            app:layout_constraintTop_toBottomOf="@+id/editPicture" />
 
         <Button
             android:id="@+id/button_create_Order"
@@ -151,11 +118,14 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:text="@string/add"
+            android:text="Подтвердить"
             android:textAllCaps="false"
             android:textColor="@color/colorOrange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spinner" />
+            app:layout_constraintTop_toBottomOf="@id/comment_creteOrder" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.core.widget.NestedScrollView>

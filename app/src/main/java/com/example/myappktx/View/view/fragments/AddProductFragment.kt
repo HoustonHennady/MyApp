@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -14,7 +13,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.ProductModel
 import com.example.myappktx.R
 import com.example.myappktx.ViewModels.MyViewModel
-import com.google.protobuf.Empty
 import kotlinx.android.synthetic.main.fragment_add_to_base.*
 
 class AddProductFragment : Fragment() {
@@ -44,7 +42,7 @@ class AddProductFragment : Fragment() {
             }
 
         }
-        buttonAddToBase.setOnClickListener {
+        button_create_Order.setOnClickListener {
             viewModel.addNewProduct(onClickAdd())
             onClickAdd()
         }
@@ -70,11 +68,11 @@ class AddProductFragment : Fragment() {
 
     private fun onClickAdd(): ProductModel {
         var newProduct = ProductModel()
-        newProduct.name = editName.text.toString()
+        newProduct.name = userName_creteOrder.text.toString()
         newProduct.picture = editPicture.text.toString()
-        newProduct.fullName = editFullName.text.toString()
-        newProduct.description = editDescription.text.toString()
-        newProduct.price = editPrice.text.toString().toDouble()
+        newProduct.fullName = address_creteOrder.text.toString()
+        newProduct.description = comment_creteOrder.text.toString()
+        newProduct.price = tel_creteOrder.text.toString().toDouble()
         newProduct.category = itemSelected
         Toast.makeText(context, newProduct.toString(), Toast.LENGTH_LONG).show()
         return newProduct

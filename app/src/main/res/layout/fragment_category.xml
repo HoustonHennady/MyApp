@@ -2,12 +2,12 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/categoryFragmentScroll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorWhite"
-    android:id="@+id/categoryFragmentScroll"
-    tools:context=".View.view.fragments.CategoryFragment"
-    android:paddingBottom="50dp">
+    android:paddingBottom="50dp"
+    tools:context=".View.view.fragments.CategoryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,9 +15,8 @@
         android:background="@color/colorWhite"
         tools:context=".View.view.fragments.CategoryFragment">
 
-
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imageLogoApp"
             android:layout_width="220dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
@@ -37,8 +36,8 @@
             android:overScrollMode="never"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/imageLogoApp">
+
         </androidx.viewpager.widget.ViewPager>
 
         <TextView
@@ -49,8 +48,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:includeFontPadding="false"
-            android:textSize="25sp"
             android:text="@string/Category"
+            android:textSize="25sp"
             app:layout_constraintBottom_toTopOf="@id/recycler_category"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,11 +62,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textTitleCategory"
-            >
+            app:layout_constraintTop_toBottomOf="@id/textTitleCategory">
+
+
         </androidx.recyclerview.widget.RecyclerView>
-
-
+        <ProgressBar
+            android:id="@+id/progressBarCategoryFragment"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/imageLogoApp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="250dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

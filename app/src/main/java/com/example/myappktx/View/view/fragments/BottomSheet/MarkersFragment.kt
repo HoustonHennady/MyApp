@@ -1,21 +1,23 @@
-package com.example.myappktx.View.view.fragments
+package com.example.myappktx.View.view.fragments.BottomSheet
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ProductModel
 import com.example.myappktx.R
+import com.example.myappktx.Utill.OnClickCallbak
 import com.example.myappktx.View.view.adapters.AdapterRecyclerBottomSheet
 import com.example.myappktx.ViewModels.MyViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.bottom_sheet_view_pager.*
 import kotlinx.android.synthetic.main.bottom_sheet_view_pager.view.*
 
-class MarkersFragment : BottomSheetDialogFragment() {
+class MarkersFragment : Fragment() {
 
     private lateinit var viewModel: MyViewModel
     private lateinit var recyclerAdapter: AdapterRecyclerBottomSheet
@@ -25,7 +27,7 @@ class MarkersFragment : BottomSheetDialogFragment() {
         viewModel = ViewModelProviders
                 .of(activity!!)
                 .get(MyViewModel::class.java)
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.BottomSheetDialog)
+        //setStyle(DialogFragment.STYLE_NORMAL, R.style.BottomSheetDialog)
         recyclerAdapter = AdapterRecyclerBottomSheet()
     }
 
@@ -43,6 +45,7 @@ class MarkersFragment : BottomSheetDialogFragment() {
         }
         setRecycler()
         subscribe()
+        onClick()
     }
 
     private fun setRecycler() {
@@ -54,6 +57,19 @@ class MarkersFragment : BottomSheetDialogFragment() {
     }
 
     private fun subscribe() {
-        recyclerAdapter.setList(viewModel.getListMarkersProduct())
+        viewModel.getListMarkersProduct().observe(viewLifecycleOwner, Observer {
+            recyclerAdapter.setList(it)
+        })
     }
+
+    private fun onClick() {
+        recyclerAdapter.attachSingleCallBack(object : OnClickCallbak<ProductModel> {
+            override fun onClick(model: ProductModel) {
+                viewModel.addToBasket(model = model)
+                viewModel.removFromMarkers(product = model)
+            }
+        })
+    }
+
+
 }

@@ -17,6 +17,8 @@ class AdapterBasketRecycler : RecyclerView.Adapter<AdapterBasketRecycler.ViewHol
     private var callback: BasketAdapterCallback<ProductModel>? = null
     private var model:ArrayList<ProductModel> = ArrayList()
 
+    fun getList():ArrayList<ProductModel>{return model}
+
     fun setList(arrayList: ArrayList<ProductModel>){
         model.clear()
         model = arrayList
@@ -27,6 +29,11 @@ class AdapterBasketRecycler : RecyclerView.Adapter<AdapterBasketRecycler.ViewHol
         this.callback = callback
     }
 
+    fun updateItems(itemsList: ArrayList<ProductModel>) {
+        model.clear()
+        model = itemsList
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_recycler_basket, parent, false),callback)
     }

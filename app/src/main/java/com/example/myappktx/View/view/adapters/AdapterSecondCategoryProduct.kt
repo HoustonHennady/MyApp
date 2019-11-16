@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import com.example.ProductModel
 import com.example.myappktx.R
 import kotlinx.android.synthetic.main.item_recycler_secondcategory_product.view.*
@@ -26,13 +28,11 @@ class AdapterSecondCategoryProduct : BaseAdapter<ProductModel>() {
 
         override fun bind(model: ProductModel) {
             textView.text = model.name
-            Glide.with(itemView.context)
-                     .load(model.picture)
-                    .into(image)
+            Glide.with(itemView.context).load(model.picture)
+                .into(image)
 
         }
     }
-
     override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
         super.onDetachedFromRecyclerView(recyclerView)
         clearList()

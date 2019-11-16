@@ -10,7 +10,7 @@ data class ProductModel
  @JvmField @PropertyName(CATEGORY) var category: String = "",
  @JvmField @PropertyName(LISTCONFIGURATION) val listConfiguration: List<String> = emptyList(),
  @JvmField @PropertyName(PRICE) var price: Double = 0.0,
- @JvmField @PropertyName(QUANTITY) var quantity: Int = 0,
+ @JvmField @PropertyName(QUANTITY) var quantity: Int = 1,
  @JvmField @PropertyName(PICTURE) var picture: String = "") {
     companion object {
         const val NAME = "name"

@@ -10,12 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.myappktx.Model.StateCategoryFragment
 import com.example.myappktx.Model.MainCategoryModel
 import com.example.myappktx.Model.NewViewPagerModel
 import com.example.myappktx.R
 import com.example.myappktx.View.view.adapters.BaseAdapterCallback
 import com.example.myappktx.View.view.adapters.CardAdapter
 import com.example.myappktx.View.view.adapters.MainCategoryAdapter
+import com.example.myappktx.View.view.fragments.BottomSheet.ViewPagerDetailsFragment
 import com.example.myappktx.ViewModels.MyViewModel
 import kotlinx.android.synthetic.main.fragment_category.*
 
@@ -24,7 +26,7 @@ class CategoryFragment : Fragment() {
     private lateinit var cardAdapter: CardAdapter
     private lateinit var myViewModel: MyViewModel
     private lateinit var recyclerMainCategoryAdapter: MainCategoryAdapter
-    private var bottomSheet: ViewPagerDetailsFragmet = ViewPagerDetailsFragmet()
+    private var bottomSheet: ViewPagerDetailsFragment = ViewPagerDetailsFragment()
 
     private var marginItemViewPager = 25
     private var paddingItemViewPager = 40
@@ -73,7 +75,21 @@ class CategoryFragment : Fragment() {
 
     private fun subscribe() {
         myViewModel.getMainCategory().observe(viewLifecycleOwner, Observer {
-            recyclerMainCategoryAdapter.setList(it)
+            when(it){
+                is StateCategoryFragment.Loading -> {
+                    view_pager.visibility = View.GONE
+                    recycler_category.visibility = View.GONE
+                    textTitleCategory.visibility = View.GONE
+                    progressBarCategoryFragment.visibility = View.VISIBLE
+                }
+                is StateCategoryFragment.Uploaded -> {
+                    recyclerMainCategoryAdapter.setList(it.items)
+                    view_pager.visibility = View.VISIBLE
+                    recycler_category.visibility = View.VISIBLE
+                    textTitleCategory.visibility = View.VISIBLE
+                    progressBarCategoryFragment.visibility = View.GONE
+                }
+            }
         })
 
         myViewModel.getListViewPager()
@@ -84,8 +100,7 @@ class CategoryFragment : Fragment() {
 
     private fun onClickImageApp() {
         myViewModel.fetchAllSubCategory()
-
-        imageView3.setOnClickListener {
+        imageLogoApp.setOnClickListener {
             it.findNavController().navigate(R.id.addToBaseFragment)
         }
     }

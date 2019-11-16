@@ -11,12 +11,12 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/item_recycler_back"
+        android:background="@color/colorOrange1"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,12 +24,12 @@
 
             <TextView
                 android:id="@+id/text_basket_title"
+                style="@style/textLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/baskrt_title"
                 android:textColor="@color/colorWhite"
                 android:textSize="19sp"
-                style="@style/textLarge"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -42,8 +42,8 @@
                 android:layout_marginEnd="15dp"
                 android:background="?android:attr/panelBackground"
                 android:shadowColor="#2B2B2B"
-                app:iconTint="@color/colorWhite"
                 app:icon="@drawable/ic_marker_white"
+                app:iconTint="@color/colorWhite"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -52,6 +52,18 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
+    <ImageView
+        android:id="@+id/image_basketNoItems"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/no_items_icon"
+        android:visibility="gone"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_basket"
         android:layout_width="match_parent"

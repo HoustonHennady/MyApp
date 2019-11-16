@@ -38,8 +38,18 @@
 
     <fragment
         android:id="@+id/bottomSheet"
-        android:name="com.example.myappktx.View.view.fragments.ViewPagerDetailsFragmet"
+        android:name="com.example.myappktx.View.view.fragments.BottomSheet.ViewPagerDetailsFragment"
         android:label="BottomSheet"
+        tools:layout="@layout/bottom_sheet_view_pager"/>
+    <fragment
+        android:id="@+id/createOrederFragment"
+        android:name="com.example.myappktx.View.view.fragments.BottomSheet.CreateOrderSheet"
+        android:label="fragment_create_oreder"
+        tools:layout="@layout/fragment_create_oreder" />
+    <fragment
+        android:id="@+id/markersFragment"
+        android:name="com.example.myappktx.View.view.fragments.BottomSheet.MarkersFragment"
+        android:label="MarkersFragment"
         tools:layout="@layout/bottom_sheet_view_pager"/>
 
 </navigation>

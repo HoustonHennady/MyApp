@@ -56,25 +56,13 @@ class AdaperSecondCategoryProduuctDiffUtli : RecyclerView.Adapter<AdaperSecondCa
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(model = model[position])
+
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = itemView.imageProduct
         val textView: TextView = itemView.textCategoryProduct
-        private val requestOption = RequestOptions()
-                .placeholder(R.drawable.recycler_background_request)
-                .error(R.drawable.recycler_background_request)
 
-        fun bind(model: ProductModel) {
-            textView.text = model.name
-            Glide.with(itemView.context)
-                    .applyDefaultRequestOptions(requestOption)
-                    .load(model.picture)
-                    .into(image)
-
-
-        }
 
 
     }

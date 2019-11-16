@@ -24,7 +24,6 @@ abstract class BaseAdapter<P>: RecyclerView.Adapter<BaseViewHolder<P>>() {
     fun setList(dataList: List<P>) {
         mDataList.clear()
         mDataList.addAll(dataList)
-        hasItems = true
         notifyDataSetChanged()
     }
     fun clearList(){
