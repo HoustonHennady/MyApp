@@ -149,7 +149,7 @@ class SecondCategoryFragment : Fragment() {
             }
 
             override fun onLongClick(model: ProductModel): Boolean {
-                Toast.makeText(context, "Добавлено в закладки", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Добавлено в закладки ", Toast.LENGTH_SHORT).show()
                 viewModel.addToMarks(model)
                 return true
             }
