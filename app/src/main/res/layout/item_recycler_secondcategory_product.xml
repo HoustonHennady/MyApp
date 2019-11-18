@@ -13,11 +13,10 @@
             android:id="@+id/imageProduct"
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@id/textCategoryProduct"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textCategoryProduct"
             />
         <TextView
             android:id="@+id/textCategoryProduct"
@@ -30,9 +29,11 @@
             android:textAlignment="center"
             android:textSize="15sp"
             android:alpha="0.8"
+            android:maxLines="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageProduct" />
+            app:layout_constraintTop_toBottomOf="@id/imageProduct"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

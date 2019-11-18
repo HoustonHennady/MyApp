@@ -8,12 +8,26 @@
         android:id="@+id/categorySecondFragment"
         android:name="com.example.myappktx.View.view.fragments.SecondCategoryFragment"
         android:label="fragment_second_category"
-        tools:layout="@layout/fragment_second_fragment1" />
+        tools:layout="@layout/fragment_second_fragment1" >
+        <action
+            android:id="@+id/action_categorySecondFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
+    </fragment>
     <fragment
         android:id="@+id/basketFragment"
         android:name="com.example.myappktx.View.view.fragments.BasketFragment"
         android:label="fragment_basket"
-        tools:layout="@layout/fragment_basket" />
+        tools:layout="@layout/fragment_basket" >
+        <action
+            android:id="@+id/action_basketFragment_to_markersFragment"
+            app:destination="@id/markersFragment" />
+        <action
+            android:id="@+id/action_basketFragment_to_createOrederFragment"
+            app:destination="@id/createOrederFragment" />
+        <action
+            android:id="@+id/action_basketFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/orderFragment"
         android:name="com.example.myappktx.View.view.fragments.OrdersFragment"
@@ -27,7 +41,19 @@
         <action
             android:id="@+id/action_categoryFragment_to_categorySecondFragment"
             app:destination="@+id/categorySecondFragment"
-            app:launchSingleTop="false" />
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/categoryFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_categoryFragment_to_addToBaseFragment"
+            app:destination="@id/addToBaseFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_bottomSheet"
+            app:destination="@id/bottomSheet" />
     </fragment>
 
     <fragment
@@ -40,7 +66,12 @@
         android:id="@+id/bottomSheet"
         android:name="com.example.myappktx.View.view.fragments.BottomSheet.ViewPagerDetailsFragment"
         android:label="BottomSheet"
-        tools:layout="@layout/bottom_sheet_view_pager"/>
+        tools:layout="@layout/bottom_sheet_view_pager">
+
+
+    </fragment>
+
+
     <fragment
         android:id="@+id/createOrederFragment"
         android:name="com.example.myappktx.View.view.fragments.BottomSheet.CreateOrderSheet"

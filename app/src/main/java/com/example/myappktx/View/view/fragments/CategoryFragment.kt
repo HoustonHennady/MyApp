@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myappktx.Model.StateCategoryFragment
 import com.example.myappktx.Model.MainCategoryModel
@@ -21,12 +24,14 @@ import com.example.myappktx.View.view.fragments.BottomSheet.ViewPagerDetailsFrag
 import com.example.myappktx.ViewModels.MyViewModel
 import kotlinx.android.synthetic.main.fragment_category.*
 
-class CategoryFragment : Fragment() {
+class CategoryFragment : Fragment(){
+
 
     private lateinit var cardAdapter: CardAdapter
     private lateinit var myViewModel: MyViewModel
     private lateinit var recyclerMainCategoryAdapter: MainCategoryAdapter
     private var bottomSheet: ViewPagerDetailsFragment = ViewPagerDetailsFragment()
+    private lateinit var navController: NavController
 
     private var marginItemViewPager = 25
     private var paddingItemViewPager = 40
@@ -53,6 +58,7 @@ class CategoryFragment : Fragment() {
         onClickBottomSheet()
         onClickRecycler()
         onClickImageApp()
+        navController = view.findNavController()
     }
 
     private fun initialization() {
@@ -97,11 +103,10 @@ class CategoryFragment : Fragment() {
                     cardAdapter.setList(it)
                 })
     }
-
     private fun onClickImageApp() {
         myViewModel.fetchAllSubCategory()
         imageLogoApp.setOnClickListener {
-            it.findNavController().navigate(R.id.addToBaseFragment)
+            it.findNavController().navigate(R.id.action_categoryFragment_to_addToBaseFragment)
         }
     }
 
@@ -114,8 +119,8 @@ class CategoryFragment : Fragment() {
             override fun onItemClick(model: MainCategoryModel) {
                 myViewModel
                         .fetchDataSubCategory(model.subCategory.toString())
-                recycler_category.findNavController()
-                        .navigate(R.id.categorySecondFragment)
+                navController.navigate(R.id.action_categoryFragment_to_categorySecondFragment)
+
             }
         })
     }

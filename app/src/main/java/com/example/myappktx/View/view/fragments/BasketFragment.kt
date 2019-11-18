@@ -70,14 +70,12 @@ class BasketFragment : Fragment() {
                     recycler_basket.visibility = View.GONE
                     buttonBuy.visibility = View.GONE
                     image_basketNoItems.visibility = View.VISIBLE
-                    Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
                 }
                 is StateBasketFragment.Uploaded -> {
                     recycler_basket.visibility = View.VISIBLE
                     buttonBuy.visibility = View.VISIBLE
                     image_basketNoItems.visibility = View.GONE
                     recyclerAdapter.setList(it.items)
-                    Toast.makeText(context, it.items.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
         })

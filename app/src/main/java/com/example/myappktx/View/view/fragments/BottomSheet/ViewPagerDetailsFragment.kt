@@ -25,7 +25,7 @@ class ViewPagerDetailsFragment : BottomSheetDialogFragment() {
     private lateinit var adapterRecycler: AdapterRecyclerBottomSheet
     private lateinit var mymodel: MyViewModel
     private var callback: BaseAdapterCallback<Boolean>? = null
-    var list: NewViewPagerModel = NewViewPagerModel()
+    private lateinit var list: NewViewPagerModel
 
     fun attachCallback(callback: BaseAdapterCallback<Boolean>) {
         this.callback = callback
